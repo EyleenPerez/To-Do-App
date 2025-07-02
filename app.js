@@ -1,7 +1,7 @@
 document.getElementById('formTask').addEventListener('submit', saveTask);
 
 function saveTask(e) {
-    e.preventDefault(); // Mover esto al inicio de la función
+    e.preventDefault();
 
     let title = document.getElementById('title').value;
     let description = document.getElementById('description').value;
@@ -16,7 +16,7 @@ function saveTask(e) {
         tasks.push(task);
         localStorage.setItem('tasks', JSON.stringify(tasks));
     } else {
-        let tasks = JSON.parse(localStorage.getItem('tasks')); // Corrección aquí
+        let tasks = JSON.parse(localStorage.getItem('tasks'));
         tasks.push(task);
         localStorage.setItem('tasks', JSON.stringify(tasks));
     }
@@ -27,7 +27,7 @@ function saveTask(e) {
 
 function deleteTask(title) {
     let tasks = JSON.parse(localStorage.getItem('tasks'));
-    tasks = tasks.filter(task => task.title !== title); // Usar filter para simplificar
+    tasks = tasks.filter(task => task.title !== title);
 
     localStorage.setItem('tasks', JSON.stringify(tasks));
     getTasks();
@@ -53,5 +53,4 @@ function getTasks() {
     }
 }
 
-// Cargar tareas al iniciar
 getTasks();
